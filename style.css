@@ -1,19 +1,30 @@
 :root{
     --fnt-small:0.75em;
-    --fnt-medium:2em;
-    --fnt-large:3em;
+    --fnt-medium:1em;
+    --fnt-lessthanlarge:1.5em;
+    --fnt-large:2.5em;
 
     --main-window-width:27vw;
+
+    --screen-width:calc(0.98 * var(--main-window-width));
+    --screen-height:3vw;
+
+    --menu-bar-width:var(--screen-width);
+    --menu-bar-height:3vw;
+
+    --button-pane-width: var(--screen-width);
+    --button-pane-height:calc(6.5*var(--button-height));
     --button-width:3vw;
     --button-height:3vw;
-    --screen-width:9vw;
-    --screen-height:3vw;
+
+    --memOperation-panel-width:var(--screen-width);
+    --memOperation-panel-height:calc(0.5 * var(--button-height));
 
     --background-color:#f3f3f3;
     --buttons-color:#ffffff;
     --button-special:#005a9e;
 
-    --icon-height: 1.4em;
+    --icon-height: 1.2em;
     --icon-width: calc(0.9*var(--icon-height));
 }
 
@@ -34,36 +45,157 @@ body{
      border:1px solid black;
 }
 .main-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
     width: var(--main-window-width);
     background-color: var(--background-color);
     box-shadow: 0 1px 10px rgb(0,0,0,0.6);
 
     /*This section is just for test and must be deleted for final code*/
-    height: 500px;
-    /*border:1px solid black;*/
+    border:1px solid black;
 }
 
 .header{
+    width: 100%;
     font-size: var(--fnt-small);
-    padding: 10px 10px;
+    padding: 0px 0px 0px 10px;
     display: flex;
     flex-direction: row;
-    justify-content: start;
+    justify-content: space-between;
     align-items: center;
     gap:1em;
+    align-self: flex-start;
+
 }
 
 .icon-container{
     width:var(--icon-width);
-    height: var(--icon-height);    
-
+    height: var(--icon-height);  
 }
-
 
 .icon-container img{
     width:100%;
     height: 100%;
 }
-
 .header p{
+    flex:4;
+}
+
+.windowIcons{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.windowIcons p{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1.3em;
+    width:40px;
+    height: 40px;    
+}
+#min-btn:hover,#max-btn:hover{
+    background-color: #bfbbbba5;
+}
+
+#close-btn:hover{
+    background-color: #ff0c0ca5;
+}
+
+
+.menu-bar{
+    width:var(--menu-bar-width);
+    height: var(--menu-bar-height);
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    gap:15px;
+    padding: 0 30px;
+
+}
+.menu-bar svg{
+    fill:black;
+    width: 15px;
+}
+.menu-bar svg:hover{
+    fill:#0abe0aa5;
+}
+.menu-bar p{
+    font-size: var(--fnt-lessthanlarge);
+    
+}
+
+.memOperations-panel{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;    
+    width:var(--memOperation-panel-width);
+    height: var(--memOperation-panel-height);
+    padding: 0 30px;
+}
+.memOperation-button{
+    font-size: var(--fnt-small);
+    background-color: var(--background-color-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding:10px 30px;
+    border:none;
+}
+
+.memOperation-button:hover{
+    background-color: #bfbbbba5;
+}
+.screen{
+    width: var(--screen-width);
+    height: var(--screen-height);
+
+
+}
+.screen input{
+    width: 100%;
+    height: 100%;
+    padding: 0 5px;
+    font-size: var(--fnt-large);
+    text-align: right;
+    border:none;
+    background-color: var(--background-color);
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+.buttons-pane{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-rows: repeat(6,1fr);
+    gap:4px;
+    width: var(--button-pane-width);
+    height: var(--button-pane-height);
+
+}
+.buttons{
+    font-size: var(--fnt-medium);
+    background-color: var(--buttons-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border:none;
+
+}
+.buttons:active{
+    background-color: var(--background-color);
 }
