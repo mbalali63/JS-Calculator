@@ -4,6 +4,10 @@ const buttonWidth = 30;
 const buttonsMargin = 1;
 const buttonsArr = [];
 const memOpButtonsArr = [];
+let lastNumber = 0;
+let currentNumber = 0;
+let lastOperation = '+'
+
 function createButtons(){    
     const buttonsPane = document.querySelector('.buttons-pane');
     index = 0;
@@ -14,8 +18,10 @@ function createButtons(){
             buttonsArr[index].id = `${iRow}-${iCol}-${buttonsLabelArray[index]}`;
             buttonsArr[index].style.gridColumn = `${iCol}/ span 1`;
             buttonsArr[index].style.gridRow = `${iRow}/ span 1`;
-            buttonsArr[index].classList.add('buttons');
-            buttonsPane.appendChild(buttonsArr[index]);
+            buttonsArr[index].classList.add('buttons');            
+            buttonsPane.appendChild(buttonsArr[index]);    
+            let currentElementId = buttonsArr[index].id; 
+            document.getElementById(currentElementId).addEventListener("click",updateLastCurrentNumber); 
             index++;
         }
     }
@@ -34,5 +40,20 @@ function createMemOperationButtons(){
     }  
 }
 
+function updateLastCurrentNumber(){
+    idText = this.id;
+    idTextParts = idText.split('-');    
+    elementVal = idTextParts[2];    
+    let temp = document.querySelector('#screen-input').value;
+    document.querySelector('#screen-input').value = Number(`${temp}${elementVal}`)
+}
+
+
+
+document.getElementById('screen-input').value = 0
 createMemOperationButtons();
 createButtons();
+
+
+
+
